@@ -78,32 +78,43 @@ flowchart TD
     N --> O[⬇️ Download Video]
     N --> P[📋 Download CSV Report]
     
-    style A fill:#e1f5fe
-    style G fill:#fff3e0
-    style H fill:#ffebee
-    style I fill:#ffebee
-    style N fill:#e8f5e8
+    style A fill:#2196F3,color:#ffffff
+    style B fill:#4CAF50,color:#ffffff
+    style C fill:#4CAF50,color:#ffffff
+    style D fill:#FF9800,color:#ffffff
+    style E fill:#9C27B0,color:#ffffff
+    style F fill:#607D8B,color:#ffffff
+    style G fill:#FF5722,color:#ffffff
+    style H fill:#F44336,color:#ffffff
+    style I fill:#F44336,color:#ffffff
+    style J fill:#795548,color:#ffffff
+    style K fill:#3F51B5,color:#ffffff
+    style L fill:#607D8B,color:#ffffff
+    style M fill:#FF9800,color:#ffffff
+    style N fill:#4CAF50,color:#ffffff
+    style O fill:#2196F3,color:#ffffff
+    style P fill:#2196F3,color:#ffffff
 ```
 
 ---
 
-## 🏗️ Data Flow Diagram
+## Data Flow Diagram
 
 ```mermaid
 flowchart LR
     subgraph Frontend["🖥️ Frontend (React)"]
         A[📹 VideoFeed Component]
-        B[🧠 FocusDetection Component] 
-        C[🔍 ObjectDetection Component]
-        D[📊 App State Management]
+        B[ FocusDetection Component] 
+        C[ ObjectDetection Component]
+        D[ App State Management]
         E[🔔 Alert System]
     end
     
     subgraph Backend["⚙️ Backend (Express.js)"]
         F[🛡️ CORS & Security Layer]
-        G[📝 Event Logging API]
-        H[📊 Report Generation API]
-        I[👤 Session Management API]
+        G[ Event Logging API]
+        H[ Report Generation API]
+        I[ Session Management API]
     end
     
     subgraph Database["🗄️ MongoDB Atlas"]
@@ -138,10 +149,29 @@ flowchart LR
     C -->|🔄 Load Models| M
     C -->|🔄 Load Models| O
     
-    style Frontend fill:#e3f2fd
-    style Backend fill:#f3e5f5
-    style Database fill:#e8f5e8
-    style External fill:#fff8e1
+    style Frontend fill:#2196F3,color:#ffffff
+    style Backend fill:#4CAF50,color:#ffffff
+    style Database fill:#FF9800,color:#ffffff
+    style External fill:#9C27B0,color:#ffffff
+    
+    style A fill:#1976D2,color:#ffffff
+    style B fill:#1976D2,color:#ffffff
+    style C fill:#1976D2,color:#ffffff
+    style D fill:#1976D2,color:#ffffff
+    style E fill:#1976D2,color:#ffffff
+    
+    style F fill:#388E3C,color:#ffffff
+    style G fill:#388E3C,color:#ffffff
+    style H fill:#388E3C,color:#ffffff
+    style I fill:#388E3C,color:#ffffff
+    
+    style J fill:#F57C00,color:#ffffff
+    style K fill:#F57C00,color:#ffffff
+    style L fill:#F57C00,color:#ffffff
+    
+    style M fill:#7B1FA2,color:#ffffff
+    style N fill:#7B1FA2,color:#ffffff
+    style O fill:#7B1FA2,color:#ffffff
 ```
 
 ---
