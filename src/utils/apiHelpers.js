@@ -5,7 +5,11 @@
  * Handles all communication with the Express/MongoDB backend
  */
 
-const API_BASE_URL = 'http://localhost:5000';
+// Auto-detect environment for API URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || 
+  (window.location.hostname === 'localhost' ? 
+    'http://localhost:5000' : 
+    'https://tutedude-assignment-zhcf.onrender.com');
 
 // Helper function to handle API responses
 const handleResponse = async (response) => {
