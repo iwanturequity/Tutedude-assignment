@@ -1,0 +1,27 @@
+PROCTORING REPORT SUMMARY
+========================
+Candidate Name,John Doe
+Candidate ID,candidate_001
+Interview Start Time,2024-09-16T10:00:00.000Z
+Interview End Time,2024-09-16T10:45:30.000Z
+Interview Duration (minutes),45
+Focus Lost Count,3
+Suspicious Events Count,2
+Integrity Score,75
+Total Events Logged,12
+
+DETAILED EVENT LOGS
+==================
+Event Type,Message,Timestamp,Session ID
+interview-start,Interview session started,2024-09-16T10:00:00.000Z,session_001
+face,Face detected,2024-09-16T10:00:05.000Z,session_001
+look-away,User looking away for 6s,2024-09-16T10:15:30.000Z,session_001
+face,Back to normal - Face detected,2024-09-16T10:15:45.000Z,session_001
+phone-detected,Cell phone detected,2024-09-16T10:22:15.000Z,session_001
+object-cleared,cell phone removed,2024-09-16T10:22:45.000Z,session_001
+no-face,No face detected,2024-09-16T10:28:00.000Z,session_001
+face,Face detected,2024-09-16T10:28:12.000Z,session_001
+look-away,User looking away for 8s,2024-09-16T10:35:20.000Z,session_001
+notes-detected,Book/Notes detected,2024-09-16T10:38:10.000Z,session_001
+look-away,User looking away for 7s,2024-09-16T10:42:00.000Z,session_001
+interview-end,Interview session completed,2024-09-16T10:45:30.000Z,session_001
