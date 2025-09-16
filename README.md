@@ -78,22 +78,22 @@ flowchart TD
     N --> O[⬇️ Download Video]
     N --> P[📋 Download CSV Report]
     
-    style A fill:#2196F3,color:#ffffff
-    style B fill:#4CAF50,color:#ffffff
-    style C fill:#4CAF50,color:#ffffff
-    style D fill:#FF9800,color:#ffffff
-    style E fill:#9C27B0,color:#ffffff
-    style F fill:#607D8B,color:#ffffff
-    style G fill:#FF5722,color:#ffffff
-    style H fill:#F44336,color:#ffffff
-    style I fill:#F44336,color:#ffffff
-    style J fill:#795548,color:#ffffff
-    style K fill:#3F51B5,color:#ffffff
-    style L fill:#607D8B,color:#ffffff
-    style M fill:#FF9800,color:#ffffff
-    style N fill:#4CAF50,color:#ffffff
-    style O fill:#2196F3,color:#ffffff
-    style P fill:#2196F3,color:#ffffff
+    style A fill:#263238,color:#ffffff
+    style B fill:#37474f,color:#ffffff
+    style C fill:#37474f,color:#ffffff
+    style D fill:#455a64,color:#ffffff
+    style E fill:#424242,color:#ffffff
+    style F fill:#37474f,color:#ffffff
+    style G fill:#d32f2f,color:#ffffff
+    style H fill:#c62828,color:#ffffff
+    style I fill:#c62828,color:#ffffff
+    style J fill:#5d4037,color:#ffffff
+    style K fill:#303f9f,color:#ffffff
+    style L fill:#37474f,color:#ffffff
+    style M fill:#455a64,color:#ffffff
+    style N fill:#388e3c,color:#ffffff
+    style O fill:#1976d2,color:#ffffff
+    style P fill:#1976d2,color:#ffffff
 ```
 
 ---
@@ -149,29 +149,29 @@ flowchart LR
     C -->|🔄 Load Models| M
     C -->|🔄 Load Models| O
     
-    style Frontend fill:#2196F3,color:#ffffff
-    style Backend fill:#4CAF50,color:#ffffff
-    style Database fill:#FF9800,color:#ffffff
-    style External fill:#9C27B0,color:#ffffff
+    style Frontend fill:#263238,color:#ffffff
+    style Backend fill:#37474f,color:#ffffff
+    style Database fill:#424242,color:#ffffff
+    style External fill:#455a64,color:#ffffff
     
-    style A fill:#1976D2,color:#ffffff
-    style B fill:#1976D2,color:#ffffff
-    style C fill:#1976D2,color:#ffffff
-    style D fill:#1976D2,color:#ffffff
-    style E fill:#1976D2,color:#ffffff
+    style A fill:#37474f,color:#ffffff
+    style B fill:#37474f,color:#ffffff
+    style C fill:#37474f,color:#ffffff
+    style D fill:#37474f,color:#ffffff
+    style E fill:#37474f,color:#ffffff
     
-    style F fill:#388E3C,color:#ffffff
-    style G fill:#388E3C,color:#ffffff
-    style H fill:#388E3C,color:#ffffff
-    style I fill:#388E3C,color:#ffffff
+    style F fill:#455a64,color:#ffffff
+    style G fill:#455a64,color:#ffffff
+    style H fill:#455a64,color:#ffffff
+    style I fill:#455a64,color:#ffffff
     
-    style J fill:#F57C00,color:#ffffff
-    style K fill:#F57C00,color:#ffffff
-    style L fill:#F57C00,color:#ffffff
+    style J fill:#616161,color:#ffffff
+    style K fill:#616161,color:#ffffff
+    style L fill:#616161,color:#ffffff
     
-    style M fill:#7B1FA2,color:#ffffff
-    style N fill:#7B1FA2,color:#ffffff
-    style O fill:#7B1FA2,color:#ffffff
+    style M fill:#5d4037,color:#ffffff
+    style N fill:#5d4037,color:#ffffff
+    style O fill:#5d4037,color:#ffffff
 ```
 
 ---
