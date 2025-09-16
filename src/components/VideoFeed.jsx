@@ -147,14 +147,12 @@ export default function VideoFeed({ onStreamReady, onRecordingStateChange }) {
   };
 
  return (
-  <div style={{ maxWidth: 1400 }}>
-    <div style={{ marginBottom: 10 }}>
+  <div className="video-feed-container">
+    {/* Control Buttons */}
+    <div className="video-controls">
       {!isStreaming ? (
-        <button
-          onClick={startCamera}
-          style={{ background: "#ff9800", color: "white" }}
-        >
-          Start Camera
+        <button onClick={startCamera} className="btn btn-start-camera">
+          📹 Start Camera
         </button>
       ) : (
         <button
@@ -162,53 +160,55 @@ export default function VideoFeed({ onStreamReady, onRecordingStateChange }) {
             stopDrawing();
             stopCamera();
           }}
-          style={{ background: "#ff9800", color: "white" }}
+          className="btn btn-stop-camera"
         >
-          Stop Camera
+          ⏹️ Stop Camera
         </button>
       )}
 
       {isStreaming && (
         <>
           {!isRecording ? (
-            <button
-              onClick={startRecording}
-              style={{ marginLeft: 8, background: "#ff9800", color: "white" }}
-            >
-              Start Recording
+            <button onClick={startRecording} className="btn btn-start-recording">
+              🔴 Start Recording
             </button>
           ) : (
-            <button
-              onClick={stopRecording}
-              style={{ marginLeft: 8, background: "#f44336", color: "white" }}
-            >
-              Stop Recording
+            <button onClick={stopRecording} className="btn btn-stop-recording">
+              ⏹️ Stop Recording
             </button>
           )}
         </>
       )}
     </div>
 
-    {error && <div style={{ color: "red", marginBottom: 8 }}>Error: {error}</div>}
+    {error && (
+      <div className="error-message">
+        ⚠️ Error: {error}
+      </div>
+    )}
 
-    <div style={{ display: "flex", gap: 16, position: "relative" }}>
+    {/* Video Display Area */}
+    <div className="video-display">
       <video
         ref={videoRef}
-        style={{ width: 640, height: 480, background: "#000" }}
+        className="video-element"
         playsInline
         muted
       />
       <canvas
         ref={canvasRef}
-        style={{
-          width: 640,
-          height: 480,
-          border: "1px solid #ddd",
-          position: "absolute",
-          top: 0,
-          left: 0,
-        }}
+        className="video-canvas"
       />
+      
+      {!isStreaming && (
+        <div className="video-placeholder">
+          <div className="placeholder-content">
+            <div className="placeholder-icon">📹</div>
+            <div className="placeholder-text">Camera Not Started</div>
+            <div className="placeholder-subtitle">Click "Start Camera" to begin monitoring</div>
+          </div>
+        </div>
+      )}
     </div>
 
     {isStreaming && (

@@ -5,6 +5,7 @@ import ObjectDetection from "./components/ObjectDetection";
 import { initializeAlerts, triggerAlert, testAlert } from "./utils/alertHelpers";
 import { generateSessionId, logEventWithBackend, updateSession, testBackendConnection, downloadBackendCSV } from "./utils/apiHelpers";
 import { exportProctoringReport } from "./utils/csvHelpers";
+import "./App.css";
 
 export default function App() {
   const [videoEl, setVideoEl] = useState(null);
@@ -253,226 +254,157 @@ export default function App() {
     );
   }
 
-  // 👇 Original code untouched
+  // 👇 Modern Professional UI
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      {/* Left side - Video & Detection */}
-      <div style={{ flex: 3, padding: 20 }}>
-        <h2>Tutedude — Proctor Demo</h2>
-
-        {/* System Status Indicators */}
-        <div style={{ marginBottom: 15, display: 'flex', gap: 15, fontSize: 14 }}>
-          <span style={{ 
-            color: backendConnected ? '#4CAF50' : '#FF5722',
-            fontWeight: 'bold'
-          }}>
-            🔗 Backend: {backendConnected ? 'Connected' : 'Disconnected'}
-          </span>
-          <span style={{ 
-            color: alertsEnabled ? '#4CAF50' : '#FF9800',
-            fontWeight: 'bold'
-          }}>
-            🔔 Alerts: {alertsEnabled ? 'Enabled' : 'Disabled'}
-          </span>
-          <span style={{ 
-            color: isInterviewActive ? '#4CAF50' : '#666',
-            fontWeight: 'bold'
-          }}>
-            🎥 Status: {isInterviewActive ? 'Active' : 'Inactive'}
-          </span>
-        </div>
-
-        {/* Test Alert Button (for debugging) */}
-        {alertsEnabled && (
-          <button
-            onClick={testAlert}
-            style={{
-              padding: "6px 10px",
-              background: "#9C27B0",
-              color: "white",
-              border: "none",
-              borderRadius: 4,
-              cursor: "pointer",
-              marginRight: 10,
-              fontSize: 12
-            }}
-          >
-            🧪 Test Alert
-          </button>
-        )}
-
-        {/*  Candidate Name Input */}
-        <div style={{ marginBottom: 10 }}>
-          <label>
-            Candidate Name:{" "}
-            <input
-              type="text"
-              value={candidateName}
-              onChange={(e) => setCandidateName(e.target.value)}
-              placeholder="Enter candidate name"
-              style={{ padding: "4px 6px", marginLeft: "6px" }}
-              disabled={isInterviewActive}
-            />
-          </label>
-        </div>
-
-        {/* Session Info */}
-        <div style={{ marginBottom: 10, fontSize: 12, color: '#666' }}>
-          Session ID: {sessionId} | Candidate ID: {candidateId}
-        </div>
-
-        {/* Prevent Start Camera until name entered */}
-        {candidateName.trim() === "" ? (
-          <button
-            onClick={() => alert("⚠️ Please enter your name before starting.")}
-            style={{
-              padding: "10px 12px",
-              background: "#ff9800",
-              color: "black",
-              border: "none",
-              borderRadius: 4,
-              cursor: "not-allowed",
-            }}
-          >
-            Start Camera
-          </button>
-        ) : (
-          <VideoFeed 
-            onStreamReady={handleStreamReady} 
-            onRecordingStateChange={handleRecordingStateChange}
-          />
-        )}
-
-        {videoEl && canvasEl && (
-          <>
-            <FocusDetection
-              videoEl={videoEl}
-              canvasEl={canvasEl}
-              addLogEvent={addLogEvent}
-            />
-            <ObjectDetection
-              videoEl={videoEl}
-              canvasEl={canvasEl}
-              addLogEvent={addLogEvent}
-            />
-          </>
-        )}
-      </div>
-
-      {/*  Logs Sidebar */}
-      <div
-        style={{
-          flex: 1,
-          borderLeft: "2px solid #ddd",
-          padding: 12,
-          background: "#ff9800",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <h3 style={{ margin: "0 0 10px" }}>Event Logs</h3>
-
-        {/* Quick stats above logs */}
-        <div style={{ marginBottom: 10, fontSize: 14, color: "#333" }}>
-          <p>
-            <strong>Candidate:</strong> {candidateName || "N/A"}
-          </p>
-          <p>
-            <strong>Focus Lost:</strong> {focusLostCount}
-          </p>
-          <p>
-            <strong>Suspicious Events:</strong> {suspiciousEvents.length}
-          </p>
-          <p>
-            <strong>Integrity Score:</strong> {integrityScore}
-          </p>
-        </div>
-
-        <div
-          style={{
-            flex: 1,
-            overflowY: "auto",
-            border: "1px solid #ccc",
-            borderRadius: 4,
-            padding: 8,
-            background: "white",
-          }}
-        >
-          {logs.length === 0 ? (
-            <div>No events yet</div>
-          ) : (
-            logs.map((l, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: "6px 4px",
-                  borderBottom: "1px solid #eee",
-                  fontSize: 14,
-                }}
-              >
-                <strong style={{ color: "#333" }}>{l.type}</strong> — {l.message}
-                <br />
-                <small style={{ color: "#666" }}>{l.timestamp}</small>
-              </div>
-            ))
-          )}
-          <div ref={logsEndRef} />
-        </div>
-
-        {/* Download Report Button */}
-        <div style={{ marginTop: 12, display: 'flex', gap: 8 }}>
-          <button
-            onClick={downloadReport}
-            style={{
-              padding: "10px 12px",
-              background: "#007bff",
-              color: "white",
-              border: "none",
-              borderRadius: 4,
-              cursor: "pointer",
-              flex: 1
-            }}
-          >
-            � Download Recording
-          </button>
-          
-          {backendConnected && (
-            <button
-              onClick={downloadBackendReport}
-              style={{
-                padding: "10px 12px",
-                background: "#28a745",
-                color: "white",
-                border: "none",
-                borderRadius: 4,
-                cursor: "pointer",
-                flex: 1
-              }}
-            >
-              🚀 Download Backend Report
-            </button>
-          )}
-        </div>
+    <div className="app-container">
+      {/* Main Header */}
+      <header className="main-header">
+        <h1 className="main-title">Tutedude — Proctoring System</h1>
         
-        {recordedBlob && (
-          <div style={{ marginTop: 8 }}>
-            <button
-              onClick={downloadRecording}
-              style={{
-                padding: "10px 12px",
-                background: "#6c757d",
-                color: "white",
-                border: "none",
-                borderRadius: 4,
-                cursor: "pointer",
-                width: "100%"
-              }}
-            >
-              📹 Download Recording
-            </button>
+        {/* System Status Indicators */}
+        <div className="status-indicators">
+          <div className={`status-badge ${backendConnected ? 'connected' : 'disconnected'}`}>
+            🔗 Backend: {backendConnected ? 'Connected' : 'Disconnected'}
           </div>
-        )}
-      </div>
+          <div className={`status-badge ${alertsEnabled ? 'enabled' : 'disabled'}`}>
+            🔔 Alerts: {alertsEnabled ? 'Enabled' : 'Disabled'}
+          </div>
+          <div className={`status-badge ${isInterviewActive ? 'active' : 'inactive'}`}>
+            🎥 Status: {isInterviewActive ? 'Active' : 'Inactive'}
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content Grid */}
+      <main className="main-content">
+        {/* Video Section Card */}
+        <div className="video-card">
+          <div className="card-header">
+            <h2>Video Monitoring</h2>
+            {alertsEnabled && (
+              <button onClick={testAlert} className="test-alert-btn">
+                🧪 Test Alert
+              </button>
+            )}
+          </div>
+
+          {/* Candidate Input Section */}
+          <div className="candidate-section">
+            <div className="input-group">
+              <label htmlFor="candidateName">Candidate Name:</label>
+              <input
+                id="candidateName"
+                type="text"
+                value={candidateName}
+                onChange={(e) => setCandidateName(e.target.value)}
+                placeholder="Enter candidate name"
+                disabled={isInterviewActive}
+                className="candidate-input"
+              />
+            </div>
+            
+            <div className="session-info">
+              Session ID: {sessionId} | Candidate ID: {candidateId}
+            </div>
+          </div>
+
+          {/* Video Feed Container */}
+          <div className="video-container">
+            {candidateName.trim() === "" ? (
+              <button
+                onClick={() => alert("⚠️ Please enter your name before starting.")}
+                className="start-camera-disabled"
+              >
+                📹 Start Camera
+              </button>
+            ) : (
+              <VideoFeed 
+                onStreamReady={handleStreamReady} 
+                onRecordingStateChange={handleRecordingStateChange}
+              />
+            )}
+
+            {videoEl && canvasEl && (
+              <>
+                <FocusDetection
+                  videoEl={videoEl}
+                  canvasEl={canvasEl}
+                  addLogEvent={addLogEvent}
+                />
+                <ObjectDetection
+                  videoEl={videoEl}
+                  canvasEl={canvasEl}
+                  addLogEvent={addLogEvent}
+                />
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Event Logs Card */}
+        <div className="logs-card">
+          <div className="card-header">
+            <h2>Event Logs</h2>
+          </div>
+
+          {/* Stats Summary */}
+          <div className="stats-summary">
+            <div className="stat-item">
+              <span className="stat-label">Candidate:</span>
+              <span className="stat-value">{candidateName || "N/A"}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">Focus Lost:</span>
+              <span className="stat-value">{focusLostCount}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">Suspicious Events:</span>
+              <span className="stat-value">{suspiciousEvents.length}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">Integrity Score:</span>
+              <span className="stat-value">{integrityScore}</span>
+            </div>
+          </div>
+
+          {/* Logs Container */}
+          <div className="logs-container">
+            {logs.length === 0 ? (
+              <div className="no-events">No events yet</div>
+            ) : (
+              logs.map((l, i) => (
+                <div key={i} className="log-entry">
+                  <div className="log-header">
+                    <span className={`event-type ${l.type}`}>{l.type}</span>
+                    <span className="log-time">{new Date(l.timestamp).toLocaleTimeString()}</span>
+                  </div>
+                  <div className="log-message">{l.message}</div>
+                </div>
+              ))
+            )}
+            <div ref={logsEndRef} />
+          </div>
+
+          {/* Action Buttons */}
+          <div className="action-buttons">
+            <button onClick={downloadReport} className="btn btn-primary">
+              📊 Download CSV Report
+            </button>
+            
+            {backendConnected && (
+              <button onClick={downloadBackendReport} className="btn btn-success">
+                🚀 Download Backend Report
+              </button>
+            )}
+            
+            {recordedBlob && (
+              <button onClick={downloadRecording} className="btn btn-secondary">
+                📹 Download Recording
+              </button>
+            )}
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
