@@ -13,7 +13,12 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000', 'https://tutedude-assignment-eight.vercel.app'],
+  origin: [
+    'http://localhost:5173', 
+    'http://localhost:3000', 
+    'https://tutedude-assignment-eight.vercel.app',
+    'https://tutedude-assignment-black.vercel.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
@@ -130,12 +135,33 @@ const Session = mongoose.model('Session', SessionSchema);
 
 // Routes
 
+// Root route - API Information
+app.get('/', (req, res) => {
+  res.json({
+    message: '🎥 Tutedude Proctoring System API',
+    status: 'Active',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      events: 'POST /events',
+      reports: 'GET /reports/:candidateId',
+      csv: 'GET /report/csv/:candidateId',
+      sessions: 'GET /sessions/:sessionId'
+    },
+    frontend: 'https://tutedude-assignment-black.vercel.app',
+    documentation: 'https://github.com/iwanturequity/Tutedude-assignment',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Health Check
 app.get('/health', (req, res) => {
   res.json({ 
     status: 'OK', 
     message: 'Tutedude Proctoring Backend is running',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    database: 'connected',
+    frontend: 'https://tutedude-assignment-black.vercel.app'
   });
 });
 
